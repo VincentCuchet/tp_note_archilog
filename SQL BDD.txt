@@ -1,0 +1,44 @@
+CREATE TABLE Stade (
+id_stade INT NOT NULL AUTO_INCREMENT,
+nom_stade VARCHAR2(50) NOT NULL,
+capacite_stade NUMERIC(10,0) NOT NULL,
+adresse_stade VARCHAR2(50) NULL,
+tel_stade VARCHAR2(10) NULL,
+PRIMARY KEY (id_stade) );
+
+CREATE TABLE Equipe (
+id_equipe INT NOT NULL AUTO_INCREMENT,
+nom_equipe VARCHAR2(50) NOT NULL,
+entraineur_equipe VARCHAR2(50) NOT_NULL,
+blason_equipe VARCHAR2(100) NULL,
+nb_but_marques NUMERIC(3,0) NOT NULL,
+nb_but_concedes NUMERIC(3,0) NOT NULL,
+pts_saison_equipe NUMERIC(3,0) NOT NULL,
+president_equipe VARCHAR2(50) NOT NULL,
+annee_creation_equipe NUMERIC(4,0) NOT NULL,
+id_stade INT NOT NULL,
+id_championnat INT NOT NULL,
+PRIMARY KEY (id_equipe) );
+
+CREATE TABLE Championnat (
+id_championnat INT NOT NULL AUTOINCREMENT,
+nom_championnat VARCHAR2(50) NOT NULL,
+pays_championnat VARCHAR2(50) NOT NULL,
+annee_championnat NUMERIC(4,0) NOT NULL,
+nb_equipe_championnat NUMERIC(3,0) NOT NULL,
+pts_gagne NUMERIC(2,0) NOT NULL,
+pts_perdu NUMERIC(2,0) NOT NULL,
+pts_nul NUMERIC(2,0) NOT NULL,
+type_exaequo VARCHAR2(50) NOT NULL,
+PRIMARY KEY (id_championnat) );
+
+CREATE TABLE Match (
+id_match INT NOT NULL AUTO_INCREMENT,
+equipe_dom INT NOT NULL,
+equipe_ext INT NOT NULL,
+date_match NUMERIC(4,0) NOT NULL,
+equipe_gagnante INT NOT NULL,
+nb_but_dom NUMERIC(2,0) NOT NULL,
+nb_but_ext NUMERIC(2,0) NOT NULL,
+id_championnat INT NOT NULL,
+PRIMARY KEY (id_match) );
